@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ###### to do understand meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<!--     <meta name="description" content=""> ###### to do -->
+<!--     <meta name="nehal" content=""> ###### to do-->
+
+
+<title>THE NOMADIC CLAN</title>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/CustomStyles.css" rel="stylesheet">
+<link href="css/timeline.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+<script src="js/angular.min.js"></script>
+<script src="js/CustomAngular.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBtI7AN64cEY4OHkRyaPJd_RwiuDe_pA-o">
+    </script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!--###### to do -->
+
+
+</head>
+<!-- NAVBAR
+================================================== -->
+<body ng-app="myApp" ng-controller="notificationController" onhashchange ="goBack()">
+	<div class="navbar-wrapper header">
+		<div class="container">
+
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="myNavbar">
+				<div class="container-fluid">
+					<!-- ## to do what difference? -->
+					<div class="navbar-header">
+						<div class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#navbar" aria-expanded="false"
+							aria-controls="navbar">
+
+							<i class="fa fa-bars"></i>
+							
+							
+						</div>
+						<a class="navbar-brand" href="#">
+						
+<!-- 						<h5 class ="header-brand-name">The Nomadic <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clan</h5> -->
+						<img class ="header-logo" src="img/logo-small.png"
+							alt="logo" /></a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav my-left-menu">
+							<li class="active"><a href="#home">Home</a></li>
+							<li><a href="#subscribe">Deals</a></li>
+							
+							                <li><a  href=""><span class ="fa fa-map-marker"></span></a></li>
+
+							<li class="dropdown wide-li" ><input type="text"
+								class="form-control my-cityName" placeholder="My Location"
+								id="loc" />
+								 <script>
+                var input = document.getElementById('loc');
+                var autocomplete = new google.maps.places.Autocomplete(input);
+            </script> 
+            
+       </li>
+						</ul>
+
+						<ul class="nav navbar-nav right-side-menu">
+							<li><input type="text"
+								class="form-control input-sm my-underline-input" name ="q"
+								style="display: none" id="my-header-searchBox"
+								placeholder="search" /></li>
+							<li><a href="#" id="my-header-searchIcon-a"><i
+									class="fa fa-search"></i></a></li>
+							<li id="login"><a href="#" data-toggle="modal"
+								data-target="#myModal">Login</a></li>
+							<li id="notifications" style="display: none;"><a href="#"
+								data-toggle="modal" data-target="#myNotificationsModal"> <i
+									class="fa fa-bell"></i> <span class="count" ng-show="count>0">{{count}}</span>
+
+
+
+							</a></li>
+							<li id="userMenu" class="dropdown" style="display: none;"><a
+								href="#" role="button">Menu <span class="caret"></span></a> 
+								
+								<ul class="dropdown-menu">
+									<li><a href="#profile">Profile</a></li>
+									<li><a href="#travel-groups">Groups</a></li>
+									<li><a href="#home" id='logoutButton'>Logout</a></li>
+								</ul></li>
+							<li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li>	
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</div>
+	</div>
+
+	<div class="content">
+
+		<div class="gallery  fade in active" id="home">
+
+
+			<!-- Carousel
+    ================================================== -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img class="first-slide" src="img/green_mountains.jpg"
+							alt="First slide">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1>Welcome to The Nomadic Clan</h1>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+								
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img class="second-slide" src="img/similar-interest.jpg"
+							alt="Second slide">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1>Find people of similar travelling interests</h1>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+								
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img class="third-slide" src="img/join-travel-groups.jpg"
+							alt="Third slide">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1>Join Travel Groups</h1>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button"
+					data-slide="prev"> <span
+					class="fa fa-chevron-left fa-2x" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#myCarousel" role="button"
+					data-slide="next"> <span
+					class="fa fa-chevron-right fa-2x" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- /.carousel -->
+
+		</div>
+
+
+		<div id="subscribe" class=" container-fluid">
+
+			<div class="col-lg-6  row-2 my-coupon">
+				<div>
+					This week only: Over 50% off on trip to Singapore
+					<button type='button' class="btn btn-warning">Get Coupon!</button>
+				</div>
+			</div>
+
+			<div class="col-lg-6  row-2 emailSubscription">
+
+				<div>
+					<i class="fa fa-2x fa-envelope-o"></i> Want to be notified for
+					latest amazing trips, travel deals, special offers, and other
+					information? <br />
+					<br />
+					<form id="SubscriptionForm">
+
+						<div class="input-group ">
+							<input type="email" placeholder="example@abc.com"
+								class="form-control"> <span class="input-group-btn">
+								<button class="btn btn-success" type="button">Subscribe</button>
+							</span>
+						</div>
+
+
+
+					</form>
+				</div>
+			</div>
+
+			<div class="col-lg-12 row-3 getDealCode">
+				<div class="col-lg-6">$25 Off Your First App Hotel Booking
+					With your private coupon code</div>
+
+				<div class="col-lg-6">
+
+
+					<p>Send a link to your phone for the FREE Expedia App and code.</p>
+					<div class="input-group ">
+
+						<input type="tel" placeholder="XXX-XXX-XXXX" class="form-control">
+						<span class="input-group-btn">
+							<button class="btn btn-warning" type="button">Send</button>
+						</span>
+					</div>
+
+				</div>
+				<div class="col-lg-12">
+					<br />
+					<p class="my-terms-and-conditions">
+						Limit one (1) coupon per user account, per qualifying hotel
+						booking every 24 hours. By providing your number, you agree to
+						receive a one-time automated text message with a link to get the
+						app. Our app offers promotions and booking services. No purchase
+						necessary. Standard text message rates may apply. <a>See
+							Details</a>
+					</p>
+				</div>
+
+			</div>
+			<div class ='col-lg-4 row-2 emailSubscription'>
+			<div>
+			<ul class ='inline-ul'>
+			<li><img src ="img/couple.png" alt ="couple" /></li>
+			<li> Couple discount.sms 'COUPLE' to 
+	          123-123-1234  and avail amazing couple discounts. Hurry!!!</li>
+			</ul>
+			 
+			</div>
+			
+			</div>
+			<div class ='col-lg-4 row-2 my-coupon'>
+			
+			<div>
+			
+			<ul class ='inline-ul'>
+			<li><i class = 'fa fa-graduation-cap fa-2x'></i></li>
+			<li>  Graduated this year?? SMS 'GRAD' to 
+	          123-123-1234  and avail amazing couple discounts. Hurry!!!</li>
+			</ul>
+			  
+			</div>
+			</div>
+			<div class ='col-lg-4 row-2 emailSubscription'>
+			<div>
+			
+				<ul class ='inline-ul'>
+			<li><i class ='fa fa-picture-o fa-2x'></i></li>
+			<li>   Send your best clicks to <a href="mailto:admin@nomad.com?subject=Photographs">admin@nomad.com</a>  and win exiting gifts</li>
+			</ul>
+
+			 <ul></ul>
+			
+			</div>
+			</div>
+		</div>
+
+<!-- 		<div class="" id="row things-to-do"></div> -->
+
+
+		<div class="post-login hide" id="profile">
+<div class ="profile-cover">
+			<div class='col-lg-2'>
+				<div class='profile-pic'>
+					<div class="my-profile-photo" id="my-profile-photo"></div>
+					<div class="profile-pic-edit-group">
+						<!-- Edit <a id ="edit-photo"><i class='fa fa-edit fa-2x input-file' class ="upload-pic"><input type="file" accept="image/*"></i></a> -->
+						<span class="fa fa-edit fa-2x btn-file upload-pic"> <input
+							type="file" id="my-file" accept="image/*">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class=col-lg-10>
+            <div class = "cover-name"><h3 id="my-profile-name">bhb jghgj</h3></div>
+
+
+
+
+			</div><!-- bjh -->
+
+
+
+</div>
+
+<div class="profile-details">
+
+          
+			<div class ="profile-menu-tabs" id ="profile-menu-tabs"	>
+			 
+   <ul class="nav nav-tabs " >
+   <!--  <li class="active"><a data-toggle="tab" href="#about-me">About</a></li>
+    <li><a data-toggle="tab" href="#my-groups">Groups</a></li> -->
+    <li class="active"><a data-toggle="tab" href="#my-trips">Trips</a></li>
+     <li><a data-toggle="tab" href="#my-travel-buddies">Travel Buddies</a></li>
+   
+  </ul>
+  <div class="tab-content">
+
+
+    <div id="my-trips" class="tab-pane fade in active">
+      <h3>My Trips</h3>
+                    <div class="panel panel-default">
+                   
+                     
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-twitter"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Trekking at the Himalayas</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                        <img src ="img/trip1.jpg" />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="fa fa-suitcase"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">When we just packed and left for rafting</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <img src ="img/trip2.jpg" />
+                                            </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Having a blast skiing !! </h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                          <img src ="img/trip3.jpg" />
+                                            <p>
+Winters are not so harsh!
+ </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Testimonial on Summer 2011 camping</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-plane"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">A beautiful island- BALI</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                           <img src ="img/trip5.jpg" /> 
+                                            <p>
+                                    "Just living isn't enough," said the butterfly, "one must also have freedom, sunshine and a little flower." -Kahlil Gibran
+                                             </p>
+                                         
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Theres something about islands</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Mad trip to Venice after Graduation</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                         <img src ="img/trip7.jpg" />
+                                            <p>Venice is one of the most beautiful..adipisicing elit.
+                                             Deserunt obcaecati, quaerat tempore officia voluptas 
+                                             debitis consectetur culpa amet, accusamus dolorum fugiat, 
+                                             animi dicta aperiam, enim incidunt quisquam maxime neque 
+                                             eaque.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>  </div>
+      <div id="my-travel-buddies" class="tab-pane fade">
+      <h3>My Buddies</h3>
+      <ul class ="list-of-budies"></ul>
+    </div>
+  
+  </div>
+			
+			
+			</div>
+
+</div>
+
+
+		</div>
+	
+
+
+		<div id="travel-groups" class="post-login hide">
+			<div class="container-fluid">
+				<div class="group  col-md-4 col-sm-6">
+					<div id ="group1">
+					   <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+						<h4><a href ="#details">Random group of hikers</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller6.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						130+ members
+						<i class="fa fa-check-circle fa-2x hide" ></i>
+					</div>
+					</div>
+				</div>
+				<div class="group col-md-4 col-sm-6">
+					<div id ="group2">
+					  <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+						<h4><a href ="#details">Photographers</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller6.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						100+ members
+					<i class="fa fa-check-circle fa-2x hide"></i>
+							</div>
+					</div>
+				</div>
+               <div class="group  col-md-4 col-sm-6">
+					<div id ="group3">
+					  <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+						<h4><a href ="#details">Never too late to honeymoon</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller6.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						 30+ members
+						<i class="fa fa-check-circle fa-2x hide" ></i>
+							</div>
+					</div>
+				</div>
+
+
+				<div class="group  col-md-4 col-sm-6">
+					<div id ="group4">
+					  <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+						<h4><a href ="#details">Beach Please</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller6.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						 120+ members
+						<i class="fa fa-check-circle fa-2x hide" ></i>
+							</div>
+					</div>
+				</div>
+
+
+				<div class="group col-md-4 col-sm-6">
+					<div id ="group5">
+					  <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+						<h4><a href ="#details">Southeast Asia</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller6.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						130+ members
+						<i class="fa fa-check-circle fa-2x hide" ></i>
+							</div>
+					</div>
+				</div>
+
+				<div class="group col-md-4 col-sm-6">
+					<div id ="group6">
+					  <div class ="group-item" data-toggle="modal" data-target="#myGroupModal">
+					  
+							<h4><a href ="#details">Surfers Paradise</a></h4>
+						<ul>
+
+							<li><a><img src="img/traveller0.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller2.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller1.jpg"
+									class="img-thumbnail img-circle" alt="traveller" /></a></li>
+							<li><a><img src="img/traveller3.jpg"
+									class="img-thumbnail img-circle " alt="traveller" /></a></li>
+
+
+
+						</ul>
+
+						230+ members
+					<i class="fa fa-check-circle fa-2x hide" ></i>
+							
+							</div>
+								
+					</div>
+					
+				</div>
+				
+				
+			
+
+			</div>
+
+		</div>
+		<!-- /.travel-groups -->
+
+
+	</div>
+	<!-- / content ends here -->
+
+	<!-- FOOTER -->
+	<footer>
+		<p class="pull-right">
+			<a href="#" class="myIconHolder my-round-badge my-black"
+				id="myTopScroller"> <i class="fa fa-angle-double-up"></i>
+			</a>
+		</p>
+		<!--         <p class="pull-right" id="myTopScroller"><a href="#">Back to top</a></p> -->
+		<p>
+			&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a
+				href="#">Terms</a>
+		</p>
+	</footer>
+
+	<!-- Modal -->
+	<div class="container">
+	<div id="myModal" class="modal fade" role="dialog">
+		<!-- <div class="modal-dialog modal-md"> -->
+			<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="my-modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#my-login-form">Log
+								In</a></li>
+						<li><a data-toggle="tab" href="#my-signup-form">Sign Up</a></li>
+						
+					</ul>
+				</div>
+				<div class="modal-body tab-content">
+
+					<div class='my-form tab-pane fade in active' id="my-login-form">
+						<form name="my-login-signup-form" id="form1">
+
+
+							<label for="emailSignIn">Email Address</label> <input type=email
+								id="emailSignIn" name="emailSignIn"
+								class="emailSignIn form-control" /> <label for="password">Password</label>
+
+							<input type=password id="password" name="password"
+								class="password form-control" /> <br /> <input type="submit"
+								id="SignIn" value="Sign In" name="signInButton"
+								class="btn btn-info form-control">
+
+<br/><br/>
+<!--       <p>Not a member? <a data-toggle="tab"  href ="#my-signup-form">Sign Up</a>   -->
+
+						</form>
+					</div>
+					<div class='my-form tab-pane fade' id="my-signup-form">
+						<form name="my-login-signup-form" id="form2">
+							<label for="fullName">Full Name</label> <input type=text
+								id="fullName" name="fullName" class="fullName form-control" /> 
+
+							<span id="" class=""></span>
+							<div>
+								<label for="cityName">City Name</label> <input type="text"
+									id="cityName" name='city' class="form-control"
+									onKeyup="ajaxFunction(this)" />
+								<div class="populateCityDiv" id="cityNameDiv">
+									<ul class='nav navbar-nav'></ul>
+								</div>
+							</div>
+
+							<span id="" class=""></span> <label for="userID">Email
+								Address</label> <input type=email id="emailSignUp" name="emailSignUp"
+								class="emailSignUp form-control" /> <span id="" class=""></span>
+							<label for="password">Password</label> <input type=password
+								id="passwordSignUp" name="passwordSignUp"
+								class="passwordSignUp form-control" /> <span
+								id="password-hierarchy-text" class=""></span><br/>
+								<label
+								for="confirmPassword">Confirm Password</label> <input
+								type=password id="confirmPassword" name="confirmPassword"
+								class="form-control" /> <br /> <input type="submit" id="SignUp"
+								value="Sign Up" name="signUpButton"
+								class="btn btn-info form-control">
+								<br/><br/>
+<!-- 								 <p>Already a member? <a data-toggle="tab"  href ="#my-login-form">Sign In</a>  -->
+
+						</form>
+					</div>
+&nbsp;
+				</div>
+			<!-- 	<div class="modal-footer">
+
+				</div> -->
+			</div>
+
+		</div>
+	</div>
+</div>
+	<!-- ======================================================================================
+==============================================POST LOGIN MODALS===============================
+================================================================================ -->
+
+<div class="modal fade" id="myGroupModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" >
+       <i class ='close fa fa-times-circle fa-2x' data-dismiss="modal"></i>
+<!--           <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <h4 class="modal-title">Group Details</h4>
+        </div>
+        
+        <div class="modal-body" >
+          
+          <h3></h3>
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default join" data-dismiss="modal">Join</button>
+           <button type="button" class="btn btn-default leave hide" data-dismiss="modal">Leave</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+	<!-- Modal notifications-->
+	<div class="modal fade" id="myNotificationsModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">My Notifications</h4>
+				</div>
+				<div class="modal-body">
+					<!--  <input id="checkboxnumone" type="checkbox" name="name" value="name">Mark All  -->
+
+
+					<table class ="table-hover">
+						<tr>
+							<th><input id="checkboxnumone" type="checkbox" name="name"
+								value="name"></th>
+							<th>Select all</th>
+							<th><a><i class="fa fa-check hide mark-as-read"
+									ng-click="markAsRead()">Mark as read</i></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a><i
+									class="fa fa-trash delete-selected hide"
+									ng-click="deleteSelected()">Delete</i></a></th>
+						<tr>
+							<td><input type="checkbox" id="1" class="checkone"
+								value="name"></td>
+							<td colspan='2' id ="m1" ng-click="markRowAsRead('m1');"><a>Hiking at Storm King State Park
+									postponed</a></td>
+						</tr>
+
+						<tr>
+							<td><input type="checkbox" id="2" class="checkone"
+								value="name"></td>
+							<td colspan='2' id ="m2" ng-click="markRowAsRead('m2');"><a>Discount coupon active now!</a></td>
+						</tr>
+
+						<tr>
+							<td><input type="checkbox" id="3" class="checkone"
+								value="name"></td>
+							<td colspan='2' id ="m3" ng-click="markRowAsRead('m3');"><a>Photographs of Arizona trip uploaded.</a></td>
+						</tr>
+
+					</table>
+
+					<p class='no-notifications hide'>No notifications left !</p>
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
+
+	<!--  JavaScript
+    ================================================== -->
+
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/password-score.js"></script>
+	<script src="js/password-score-options.js"></script>
+	<script src="js/bootstrap-strength-meter.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/additional-methods.min.js"></script>
+	<script src="js/CustomScript.js"></script>
+	<script src="js/ajaxScript.js"></script>
+
+
+
+
+
+</body>
+</html>
