@@ -1,0 +1,7 @@
+East Coast|West Coast|South East|North East|North West
+sunny|partlySunny|cloudy|slightRains|thunderStorms
+
+
+
+
+
