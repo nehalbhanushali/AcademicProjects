@@ -6,8 +6,15 @@
 
 - [x] A trip timeline as your personal travel blog is one of the main features!!
 
+### A peek into the technology
 
-## Here is a small glimpse at what the website looks like
+This website is a single page application
+Written in HTML5, css3, JavaScript, jQuery
+Java Spring Architecture with Hibernate ORM is used to create REST web services
+All calls to the API are in AJAX
+The infinite scroll javascript code lets users pull timeline information from the database on the fly
+
+### Here is a small glimpse at what the website looks like
 
  ![Alt text](/WebContent/img/screenshot1.jpg?raw=true "Img for")
  
